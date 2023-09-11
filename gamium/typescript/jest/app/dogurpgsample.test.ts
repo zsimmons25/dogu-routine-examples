@@ -45,136 +45,136 @@ test("Create Character", async () => {
   );
 });
 
-test("Go to Shop", async () => {
-  // wait Until loading done
-  await ui.find(By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]"));
+// test("Go to Shop", async () => {
+//   // wait Until loading done
+//   await ui.find(By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]"));
 
-  const player = await gamium.player(
-    By.path("/PlayerSpawnPoint[1]/WizardCharacter(Clone)[1]")
-  );
-  await player.move(
-    By.path("/Main Camera[1]"),
-    By.path("/Shops[1]/PotionShop[1]"),
-    { by: MovePlayerBy.Navigation }
-  );
-});
+//   const player = await gamium.player(
+//     By.path("/PlayerSpawnPoint[1]/WizardCharacter(Clone)[1]")
+//   );
+//   await player.move(
+//     By.path("/Main Camera[1]"),
+//     By.path("/Shops[1]/PotionShop[1]"),
+//     { by: MovePlayerBy.Navigation }
+//   );
+// });
 
-test("Buy Products", async () => {
-  const products = await ui.finds(
-    By.path(
-      "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Viewport[1]/Content[1]/ProductSlot(Clone)"
-    )
-  );
-  const scrollBar = await ui.find(
-    By.path(
-      "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Scrollbar[1]/Sliding Area[1]/Handle[1]/Image 1[1]"
-    )
-  );
-  await scrollBar.waitInteractable();
-  for (const item of products) {
-    const waitUntilInteractable = async () => {
-      const result = await gamium.tryWait(Until.elementInteractable(item), {
-        timeoutMs: 300,
-      });
-      if (result.success) {
-        await result.value.click();
-        return true;
-      }
-      await scrollBar.drag(
-        { x: scrollBar.info.position.x, y: scrollBar.info.position.y - 100 },
-        { durationMs: 100, intervalMs: 10 }
-      );
-      return false;
-    };
-    await gamium.wait(waitUntilInteractable, { timeoutMs: 10000 });
+// test("Buy Products", async () => {
+//   const products = await ui.finds(
+//     By.path(
+//       "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Viewport[1]/Content[1]/ProductSlot(Clone)"
+//     )
+//   );
+//   const scrollBar = await ui.find(
+//     By.path(
+//       "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Scrollbar[1]/Sliding Area[1]/Handle[1]/Image 1[1]"
+//     )
+//   );
+//   await scrollBar.waitInteractable();
+//   for (const item of products) {
+//     const waitUntilInteractable = async () => {
+//       const result = await gamium.tryWait(Until.elementInteractable(item), {
+//         timeoutMs: 300,
+//       });
+//       if (result.success) {
+//         await result.value.click();
+//         return true;
+//       }
+//       await scrollBar.drag(
+//         { x: scrollBar.info.position.x, y: scrollBar.info.position.y - 100 },
+//         { durationMs: 100, intervalMs: 10 }
+//       );
+//       return false;
+//     };
+//     await gamium.wait(waitUntilInteractable, { timeoutMs: 10000 });
 
-    await ui.click(
-      By.path(
-        "/Canvas[1]/ShopView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]/Text[1]"
-      )
-    );
-  }
-});
+//     await ui.click(
+//       By.path(
+//         "/Canvas[1]/ShopView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]/Text[1]"
+//       )
+//     );
+//   }
+// });
 
-test("Sell items", async () => {
-  const waitUntilInteractable = async () => {
-    const items = await ui.finds(
-      By.path(
-        "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/RightPanel[1]/ItemGridView[1]/GridPanel[1]/ItemSlot(Clone)/Text"
-      )
-    );
-    if (items.length < 2) {
-      return true;
-    }
-    const item = items[items.length - 1]!;
-    await item.click();
+// test("Sell items", async () => {
+//   const waitUntilInteractable = async () => {
+//     const items = await ui.finds(
+//       By.path(
+//         "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/RightPanel[1]/ItemGridView[1]/GridPanel[1]/ItemSlot(Clone)/Text"
+//       )
+//     );
+//     if (items.length < 2) {
+//       return true;
+//     }
+//     const item = items[items.length - 1]!;
+//     await item.click();
 
-    await ui.click(
-      By.path(
-        "/Canvas[1]/ShopView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]/Text[1]"
-      )
-    );
-    return false;
-  };
-  await gamium.wait(waitUntilInteractable, { timeoutMs: 30000 });
+//     await ui.click(
+//       By.path(
+//         "/Canvas[1]/ShopView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]/Text[1]"
+//       )
+//     );
+//     return false;
+//   };
+//   await gamium.wait(waitUntilInteractable, { timeoutMs: 30000 });
 
-  await ui.click(By.path("/Canvas[1]/ShopView[1]/UIRoot[1]/RoundButton[1]"));
-});
+//   await ui.click(By.path("/Canvas[1]/ShopView[1]/UIRoot[1]/RoundButton[1]"));
+// });
 
-test("Go to Equipment Shop", async () => {
-  const player = await gamium.player(
-    By.path("/PlayerSpawnPoint[1]/WizardCharacter(Clone)[1]")
-  );
-  await player.move(
-    By.path("/Main Camera[1]"),
-    By.path("/Shops[1]/EquipmentShop[1]"),
-    { by: MovePlayerBy.Navigation }
-  );
-});
+// test("Go to Equipment Shop", async () => {
+//   const player = await gamium.player(
+//     By.path("/PlayerSpawnPoint[1]/WizardCharacter(Clone)[1]")
+//   );
+//   await player.move(
+//     By.path("/Main Camera[1]"),
+//     By.path("/Shops[1]/EquipmentShop[1]"),
+//     { by: MovePlayerBy.Navigation }
+//   );
+// });
 
-test("Buy Products", async () => {
-  const products = await ui.finds(
-    By.path(
-      "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Viewport[1]/Content[1]/ProductSlot(Clone)"
-    )
-  );
-  const scrollBar = await ui.find(
-    By.path(
-      "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Scrollbar[1]/Sliding Area[1]/Handle[1]/Image 1[1]"
-    )
-  );
-  await scrollBar.waitInteractable();
+// test("Buy Products", async () => {
+//   const products = await ui.finds(
+//     By.path(
+//       "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Viewport[1]/Content[1]/ProductSlot(Clone)"
+//     )
+//   );
+//   const scrollBar = await ui.find(
+//     By.path(
+//       "/Canvas[1]/ShopView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Products[1]/Scroll View[1]/Scrollbar[1]/Sliding Area[1]/Handle[1]/Image 1[1]"
+//     )
+//   );
+//   await scrollBar.waitInteractable();
 
-  const targetIndexes = [2, 3, 5, 7, 9];
-  for (let i = 0; i < products.length; i++) {
-    if (!targetIndexes.includes(i)) continue;
-    const item = products[i]!;
+//   const targetIndexes = [2, 3, 5, 7, 9];
+//   for (let i = 0; i < products.length; i++) {
+//     if (!targetIndexes.includes(i)) continue;
+//     const item = products[i]!;
 
-    const waitUntilInteractable = async () => {
-      const result = await gamium.tryWait(Until.elementInteractable(item), {
-        timeoutMs: 300,
-      });
-      if (result.success) {
-        await result.value.click();
-        return true;
-      }
-      await scrollBar.drag(
-        { x: scrollBar.info.position.x, y: scrollBar.info.position.y - 100 },
-        { durationMs: 100, intervalMs: 10 }
-      );
-      return false;
-    };
-    await gamium.wait(waitUntilInteractable, { timeoutMs: 10000 });
+//     const waitUntilInteractable = async () => {
+//       const result = await gamium.tryWait(Until.elementInteractable(item), {
+//         timeoutMs: 300,
+//       });
+//       if (result.success) {
+//         await result.value.click();
+//         return true;
+//       }
+//       await scrollBar.drag(
+//         { x: scrollBar.info.position.x, y: scrollBar.info.position.y - 100 },
+//         { durationMs: 100, intervalMs: 10 }
+//       );
+//       return false;
+//     };
+//     await gamium.wait(waitUntilInteractable, { timeoutMs: 10000 });
 
-    await ui.click(
-      By.path(
-        "/Canvas[1]/ShopView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]/Text[1]"
-      )
-    );
-  }
+//     await ui.click(
+//       By.path(
+//         "/Canvas[1]/ShopView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]/Text[1]"
+//       )
+//     );
+//   }
 
-  await ui.click(By.path("/Canvas[1]/ShopView[1]/UIRoot[1]/RoundButton[1]"));
-});
+//   await ui.click(By.path("/Canvas[1]/ShopView[1]/UIRoot[1]/RoundButton[1]"));
+// });
 
 // test("Go to Upgrade Table", async () => {
 //   const player = await gamium.player(

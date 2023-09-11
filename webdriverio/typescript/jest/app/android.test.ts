@@ -12,8 +12,13 @@ test("find insert text", async () => {
     'android=new UiSelector().resourceId("org.wikipedia.alpha:id/search_src_text")'
   );
   await insertTextSelector.waitForDisplayed({ timeout: 30_000 });
-  await insertTextSelector.addValue("Wikipedia");
-  await driver.pause(5_000);
+  const a = ['Wikipedia', 'Open Source', 'Java', 'Dogu', 'Test', 'Primer'];
+  for (let i = 0; i < a.length; i++) {
+    await insertTextSelector.addValue(a[i] as string);
+    await driver.pause(1_000);
+    await insertTextSelector.clearValue();
+    await driver.pause(1_000);
+  }
 }, 10_000);
 
 test('expect to find "Wikipedia"', async () => {
