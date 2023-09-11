@@ -1,6 +1,6 @@
 import { test } from "@jest/globals";
-import { By, MovePlayerBy, Until } from "gamium";
-import { gamium, ui } from "./setup.js";
+import { By } from "gamium";
+import { ui } from "./setup.js";
 
 test("Create Account", async () => {
   const result = await ui.tryFind(

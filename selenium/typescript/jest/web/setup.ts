@@ -62,8 +62,8 @@ beforeAll(async () => {
   }
 
   if (browserName === "chrome") {
-    // wait 15 seconds
-    await driver.sleep(5 * 1000);
+    // wait 5 seconds
+    await new Promise((resolve) => setTimeout(resolve, 5_000));
     const chromeServiceBuilder = new chrome.ServiceBuilder(browserDriverPath);
     const chromeOptions = new chrome.Options();
     chromeOptions.setChromeBinaryPath(browserPath);
