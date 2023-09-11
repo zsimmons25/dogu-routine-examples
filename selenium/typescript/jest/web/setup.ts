@@ -65,6 +65,7 @@ beforeAll(async () => {
     const chromeServiceBuilder = new chrome.ServiceBuilder(browserDriverPath);
     const chromeOptions = new chrome.Options();
     chromeOptions.setChromeBinaryPath(browserPath);
+    chromeOptions.addArguments("--start-maximized");
     driver = new webdriver.Builder()
       .forBrowser("chrome")
       .setChromeOptions(chromeOptions)
