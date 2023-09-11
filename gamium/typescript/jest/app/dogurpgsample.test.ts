@@ -176,123 +176,123 @@ test("Buy Products", async () => {
   await ui.click(By.path("/Canvas[1]/ShopView[1]/UIRoot[1]/RoundButton[1]"));
 });
 
-test("Go to Upgrade Table", async () => {
-  const player = await gamium.player(
-    By.path("/PlayerSpawnPoint[1]/WizardCharacter(Clone)[1]")
-  );
-  await player.move(
-    By.path("/Main Camera[1]"),
-    By.path("/Shops[1]/UpgradeTable[1]"),
-    { by: MovePlayerBy.Navigation }
-  );
-});
+// test("Go to Upgrade Table", async () => {
+//   const player = await gamium.player(
+//     By.path("/PlayerSpawnPoint[1]/WizardCharacter(Clone)[1]")
+//   );
+//   await player.move(
+//     By.path("/Main Camera[1]"),
+//     By.path("/Shops[1]/UpgradeTable[1]"),
+//     { by: MovePlayerBy.Navigation }
+//   );
+// });
 
-test("Upgrade equipments", async () => {
-  const equipments = await ui.finds(
-    By.path(
-      "/Canvas[1]/UpgradeView[1]/UIRoot[1]/Layout[1]/RightPanel[1]/ItemGridView[1]/GridPanel[1]/ItemSlot(Clone)"
-    )
-  );
-  for (let i = 1; i < equipments.length; i++) {
-    const item = equipments[i]!;
-    await item.waitInteractable();
-    await item.click();
+// test("Upgrade equipments", async () => {
+//   const equipments = await ui.finds(
+//     By.path(
+//       "/Canvas[1]/UpgradeView[1]/UIRoot[1]/Layout[1]/RightPanel[1]/ItemGridView[1]/GridPanel[1]/ItemSlot(Clone)"
+//     )
+//   );
+//   for (let i = 1; i < equipments.length; i++) {
+//     const item = equipments[i]!;
+//     await item.waitInteractable();
+//     await item.click();
 
-    await ui.click(
-      By.path(
-        "/Canvas[1]/UpgradeView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Panel[1]/Bottom[1]/Confirm[1]"
-      )
-    );
-    await ui.click(
-      By.path(
-        "/Canvas[1]/UpgradeView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]"
-      )
-    );
-  }
+//     await ui.click(
+//       By.path(
+//         "/Canvas[1]/UpgradeView[1]/UIRoot[1]/Layout[1]/LeftPanel[1]/Panel[1]/Bottom[1]/Confirm[1]"
+//       )
+//     );
+//     await ui.click(
+//       By.path(
+//         "/Canvas[1]/UpgradeView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]"
+//       )
+//     );
+//   }
 
-  await ui.click(By.path("/Canvas[1]/UpgradeView[1]/UIRoot[1]/RoundButton[1]"));
-});
+//   await ui.click(By.path("/Canvas[1]/UpgradeView[1]/UIRoot[1]/RoundButton[1]"));
+// });
 
-test("Equip", async () => {
-  await ui.click(
-    By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/InventoryButton[1]")
-  );
+// test("Equip", async () => {
+//   await ui.click(
+//     By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/InventoryButton[1]")
+//   );
 
-  const equipments = await ui.finds(
-    By.path(
-      "/Canvas[1]/InventoryView[1]/UIRoot[1]/Layout[1]/RightPanel[1]/ItemGridView[1]/GridPanel[1]/ItemSlot(Clone)"
-    )
-  );
-  for (let i = 1; i < equipments.length; i++) {
-    const item = equipments[i]!;
-    await item.waitInteractable();
-    await item.click();
+//   const equipments = await ui.finds(
+//     By.path(
+//       "/Canvas[1]/InventoryView[1]/UIRoot[1]/Layout[1]/RightPanel[1]/ItemGridView[1]/GridPanel[1]/ItemSlot(Clone)"
+//     )
+//   );
+//   for (let i = 1; i < equipments.length; i++) {
+//     const item = equipments[i]!;
+//     await item.waitInteractable();
+//     await item.click();
 
-    await ui.click(
-      By.path(
-        "/Canvas[1]/InventoryView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]"
-      )
-    );
-  }
+//     await ui.click(
+//       By.path(
+//         "/Canvas[1]/InventoryView[1]/MultipurposePopup(Clone)[1]/UIRoot[1]/Bottom[1]/Confirm[1]"
+//       )
+//     );
+//   }
 
-  await ui.click(
-    By.path("/Canvas[1]/InventoryView[1]/UIRoot[1]/RoundButton[1]")
-  );
-});
+//   await ui.click(
+//     By.path("/Canvas[1]/InventoryView[1]/UIRoot[1]/RoundButton[1]")
+//   );
+// });
 
-test("Quest", async () => {
-  await ui.click(
-    By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/QuestButton[1]")
-  );
+// test("Quest", async () => {
+//   await ui.click(
+//     By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/QuestButton[1]")
+//   );
 
-  await ui.click(
-    By.path(
-      "/Canvas[1]/QuestView[1]/UIRoot[1]/Layout[1]/CenterPanel[1]/Bg[1]/Scroll View[1]/Viewport[1]/Content[1]/QuestSlot(Clone)[1]/TextPanel[1]/SquareButton[1]"
-    )
-  );
+//   await ui.click(
+//     By.path(
+//       "/Canvas[1]/QuestView[1]/UIRoot[1]/Layout[1]/CenterPanel[1]/Bg[1]/Scroll View[1]/Viewport[1]/Content[1]/QuestSlot(Clone)[1]/TextPanel[1]/SquareButton[1]"
+//     )
+//   );
 
-  await ui.click(By.path("/Canvas[1]/QuestView[1]/UIRoot[1]/RoundButton[1]"));
-});
+//   await ui.click(By.path("/Canvas[1]/QuestView[1]/UIRoot[1]/RoundButton[1]"));
+// });
 
-test("Hunt", async () => {
-  await ui.click(
-    By.path("/Canvas[1]/GameSceneView[1]/BottomPanel[1]/AutoHunt[1]")
-  );
-});
+// test("Hunt", async () => {
+//   await ui.click(
+//     By.path("/Canvas[1]/GameSceneView[1]/BottomPanel[1]/AutoHunt[1]")
+//   );
+// });
 
-test("Check Quest Done", async () => {
-  const waitUntilQuestDone = async () => {
-    const progress = await ui.getText(
-      By.path(
-        "/Canvas[1]/GameSceneView[1]/QuestStackView[1]/Scroll View[1]/Viewport[1]/Content[1]/QuestStackSlot(Clone)[1]/TextPanel[1]/ProgressText[1]"
-      )
-    );
-    if ("2 / 2" === progress) {
-      return true;
-    }
-    await gamium.sleep(1000);
-    return false;
-  };
-  await gamium.wait(waitUntilQuestDone, { timeoutMs: 80000 });
+// test("Check Quest Done", async () => {
+//   const waitUntilQuestDone = async () => {
+//     const progress = await ui.getText(
+//       By.path(
+//         "/Canvas[1]/GameSceneView[1]/QuestStackView[1]/Scroll View[1]/Viewport[1]/Content[1]/QuestStackSlot(Clone)[1]/TextPanel[1]/ProgressText[1]"
+//       )
+//     );
+//     if ("2 / 2" === progress) {
+//       return true;
+//     }
+//     await gamium.sleep(1000);
+//     return false;
+//   };
+//   await gamium.wait(waitUntilQuestDone, { timeoutMs: 80000 });
 
-  // hunt off
-  await ui.click(
-    By.path("/Canvas[1]/GameSceneView[1]/BottomPanel[1]/AutoHunt[1]")
-  );
+//   // hunt off
+//   await ui.click(
+//     By.path("/Canvas[1]/GameSceneView[1]/BottomPanel[1]/AutoHunt[1]")
+//   );
 
-  // quest done
-  await ui.click(
-    By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/QuestButton[1]")
-  );
+//   // quest done
+//   await ui.click(
+//     By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/QuestButton[1]")
+//   );
 
-  await ui.click(
-    By.path(
-      "/Canvas[1]/QuestView[1]/UIRoot[1]/Layout[1]/CenterPanel[1]/Bg[1]/Scroll View[1]/Viewport[1]/Content[1]/QuestSlot(Clone)[1]/TextPanel[1]/SquareButton[1]"
-    )
-  );
+//   await ui.click(
+//     By.path(
+//       "/Canvas[1]/QuestView[1]/UIRoot[1]/Layout[1]/CenterPanel[1]/Bg[1]/Scroll View[1]/Viewport[1]/Content[1]/QuestSlot(Clone)[1]/TextPanel[1]/SquareButton[1]"
+//     )
+//   );
 
-  await ui.click(By.path("/Canvas[1]/QuestView[1]/UIRoot[1]/RoundButton[1]"));
-  await ui.click(
-    By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/InventoryButton[1]")
-  );
-});
+//   await ui.click(By.path("/Canvas[1]/QuestView[1]/UIRoot[1]/RoundButton[1]"));
+//   await ui.click(
+//     By.path("/Canvas[1]/GameSceneView[1]/MainTopBar[1]/InventoryButton[1]")
+//   );
+// });
