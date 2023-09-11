@@ -1,4 +1,4 @@
-import { test, expect } from "@jest/globals";
+import { test } from "@jest/globals";
 import { driver } from "./setup.js";
 
 test("find and click wikipedia", async () => {
