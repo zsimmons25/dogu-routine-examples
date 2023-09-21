@@ -17,8 +17,7 @@ test("find Dogu elements", async () => {
 });
 
 test('Feature test', async () => {
-
-
+  await driver.sleep(15000);
   await driver.actions().click(await driver.findElement({xpath: '//button[@id="header-book-demo-button"]'})).perform();
   await driver.sleep(1000);
   // scroll to button
