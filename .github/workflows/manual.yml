@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Upload Application
+        uses: dogu-team/dogu-github-action@v1.0
+        with:
+          template: 'upload_application'
+          project-id: <your project id>
+          file-path: <your .apk, .ipa file path>
+        env:
+          DOGU_TOKEN: ${{ secrets.DOGU_PROJECT_TOKEN }}
