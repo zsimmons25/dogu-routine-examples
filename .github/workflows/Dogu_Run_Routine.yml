@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Routine
+        uses: dogu-team/dogu-github-action@v1.0
+        with:
+          template: 'run_routine'
+          project-id: <your project id>
+          routine-id: <your routine id>
+        env:
+          DOGU_TOKEN: ${{ secrets.DOGU_PROJECT_TOKEN }}
